@@ -46,6 +46,7 @@ module OmniAuth
       option :scope, BASE_SCOPES.join(' ')
       option :tenant, DEFAULT_TENANT
       option :verify_iss, false
+      option :leeway, 120
 
       credentials { { code: @code } }
       uid { claims['sub'] }
@@ -314,6 +315,7 @@ module OmniAuth
           verify_expiration: true,
           verify_iat: true,
           verify_iss: options.verify_iss,
+          leeyway: options.leeway,
           verify_not_before: true,
           algorithm: 'RS256'
         }
